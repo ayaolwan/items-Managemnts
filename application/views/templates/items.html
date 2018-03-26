@@ -1,0 +1,55 @@
+<div class="row" style="padding-bottom: 30px;">
+
+    <div class="col-md-12">
+        <div class="pull-left">
+        <h1>Item Management</h1>
+        </div>
+    </div>
+</div>
+<div class="row" style="padding-bottom: 30px;">
+
+        <div class="pull-left">
+            <div class="box-tools" style="display:inline-table">
+              <div class="input-group">
+                  <input type="text" class="form-control input-md ng-valid ng-dirty" placeholder="Search" ng-model="search" name="table_search" title="" tooltip="" data-original-title="Min character length is 3">
+                  <span class="input-group-addon">Search</span>
+              </div>
+            </div>
+        </div>
+
+
+            <div class="pull-right">
+                  <button class="btn btn-primary"   ng-click="showAModal($event)">New Item</button>
+            </div>
+
+</div>
+
+<div class="row" ng-init="getItems();">
+  <table datatable="ng" dt-options="dtOptions" dt-column-defs="dtColumnDefs" class="table table-bordered pagin-table row-border hover" >
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Tags</th>
+            <th>Picture</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr dir-paginate="sub in itemsData | itemsPerPage:pageSize | filter: search track by $index" current-page="currentPage">
+
+            <!--<td>{{ ((pageNumber- 1) * 5) + ($index + 1) }}</td>-->
+            <td>{{ $index + 1}}</td>
+            <td>{{ sub.Name}}</td>
+            <td>{{ sub.Description }}</td>
+            <td>{{ sub.Tags }}</td>
+            <td><a href="{{sub.Picture }}" alt="itemImage">View Image</a></td>
+        </tr>
+
+
+    </tbody>
+</table>
+
+
+    <dir-pagination-controls class="pull-right" on-page-change="pageChanged(newPageNumber)"  template-url="app/packages/dirPagination.tpl.html" ></dir-pagination-controls>
+</div>

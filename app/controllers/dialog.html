@@ -1,0 +1,68 @@
+<!-- Create Modal -->
+<div class="modal fade" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form method="POST" name="addItem" role="form" ng-submit="itemsAdd()" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Create Item</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-12">
+                                <strong>Title : </strong>
+                                <div class="form-group">
+                                    <input ng-model="form.title" type="text" placeholder="Title" name="title" class="form-control" required />
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-6 col-md-12">
+                                <strong>tags : </strong>
+                                <div class="form-group">
+
+                                    <!--<angucomplete id="ex1" placeholder="Search countries" pause="100" selectedobject="selectedCountry"-->
+                                                  <!--localdata="itemsDatas" searchfields="tags" titlefield="tags" minlength="1"-->
+                                                  <!--inputclass="form-control form-control-small" matchclass="highlight" />-->
+
+
+                                    <input ng-model="tags" ng-change="verifyTags(tags)" type="text"  placeholder="Tags" name="tags" class="form-control" required />
+                                </div>
+                                <div class="text-danger" ng-if="showError">This Tags entered Before</div>
+                            </div>
+
+
+
+                            <div class="col-xs-12 col-sm-6 col-md-12">
+                                <strong>Description : </strong>
+                                <div class="form-group" >
+                                <textarea ng-model="form.description" placeholder="Description" class="form-control" required>
+                                </textarea>
+                                </div>
+                            </div>
+
+
+                            <div class="col-xs-12 col-sm-6 col-md-12">
+                                <strong>Image : </strong>
+
+
+                                <input type="file" ng-model="myFile" class="" accept="image/*"  onchange="angular.element(this).scope().uploadedFile(this)">
+                                <div class="text-danger" ng-if="showFilesError">Choose File Before Add</div>
+                                <br/>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" ng-disabled="addItem.$invalid" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
