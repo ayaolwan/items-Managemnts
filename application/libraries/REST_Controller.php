@@ -739,7 +739,7 @@ abstract class REST_Controller extends \CI_Controller {
         // Call the controller method and passed arguments
         try
         {
-            call_user_func_array([$this, $controller_method], $arguments);
+//            call_user_func_array([$this, $controller_method], $arguments);
         }
         catch (Exception $ex)
         {

@@ -117,7 +117,18 @@ app.controller('itemDialogController', function($http,$scope,$rootScope,Items,up
 
 app.controller('ItemController', function(dataFactory,$scope,$http,ModalService,DTOptionsBuilder, DTColumnDefBuilder, DTInstances)
 {
-    // $scope.dtOptions = DTOptionsBuilder.newOptions().withPaginationType('full_numbers');
+    /// Call Api
+
+    $http.get(base_url +'webServices/Itemapi').
+    then(function(response)
+    {
+        if (response.status)
+        {
+            $scope.items = response.Data;
+        }
+
+    });
+
 
     $scope.currentPage=1;
     $scope.pageSize = 5;
@@ -137,6 +148,23 @@ app.controller('ItemController', function(dataFactory,$scope,$http,ModalService,
             DTColumnDefBuilder.newColumnDef(2),
             // DTColumnDefBuilder.newColumnDef(3).notSortable()
         ];
+
+
+
+
+
+  /*  $http.get(base_url +'webServices/Itemapi').success(function (data)
+    {
+        console.log(base_url +'webServices/Itemapi');
+        console.log(data);
+        if (data.status)
+        {
+            $scope.items = data.Data;
+        }
+
+        console.log($scope.items);
+    });
+*/
 
     $scope.getItems = function()
     {

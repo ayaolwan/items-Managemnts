@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Apiitem extends CI_Controller {
+class Apiitem extends MY_Controller {
 
 
     function __construct()
